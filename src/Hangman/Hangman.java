@@ -19,7 +19,7 @@ public class Hangman {
         while (lives > 0) {
             // Відображення стану гри
             System.out.println("");
-            System.out.println(word);
+            System.out.println(word.substring(0, 2) + "-");
             System.out.println("Guessed letters: " + guessedLetters);
 
             // Введення букви
