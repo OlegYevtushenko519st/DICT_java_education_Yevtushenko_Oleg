@@ -30,5 +30,23 @@ public class ChatBot {
         for (int i = 0; i <= user_inp; i++) {
             System.out.println(i + "!");
         }
+
+        // Етап 5
+        System.out.println("Let's test your programming skills.");
+        String test_question = "What is the output of the following code?\n\npublic class Test { \n\n    public static void main(String[] args) { \n\n        int x = 3; \n\n        System.out.println(x * 2); \n\n    } \n\n} \n";
+        int correct_answer = 6;
+        while (true) {
+            System.out.println(test_question);
+            System.out.println("1. 3\n2. 6\n3. 9\n4. 12\nYour answer: ");
+            int answer = scanner.nextInt();
+            if (answer == correct_answer) {
+                System.out.println("Correct!");
+                break;
+            } else {
+                System.out.println("Incorrect. The correct answer is " + correct_answer + ".");
+            }
+        }
+
+        System.out.println("Goodbye, have a nice day!");
     }
 }
