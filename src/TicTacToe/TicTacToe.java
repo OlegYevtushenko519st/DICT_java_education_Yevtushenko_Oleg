@@ -5,19 +5,33 @@ public class TicTacToe {
         // Створюємо масив для зберігання символів на ігровому полі
         char[][] board = new char[3][3];
 
-        // Заповнюємо масив символами "X" і "O"
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                board[i][j] = (i + j) % 2 == 0 ? 'X' : 'O';
-            }
+        // Зчитуємо рядок від користувача
+        System.out.print("Enter cells: ");
+        String cells = System.console().readLine();
+
+        // Перетворюємо рядок у масив символів
+        for (int i = 0; i < cells.length(); i++) {
+            board[i / 3][i % 3] = cells.charAt(i);
         }
 
         // Друкуємо ігрове поле
+        printBoard(board);
+    }
+
+    private static void printBoard(char[][] board) {
+        // Виводимо тире --------- над і під ігровою сіткою
+        System.out.println("---------");
+
+        // Друкуємо ігрову сітку
         for (int i = 0; i < board.length; i++) {
+            System.out.print("| ");
             for (int j = 0; j < board[i].length; j++) {
-                System.out.print(board[i][j]);
+                System.out.print(board[i][j] + " ");
             }
-            System.out.println();
+            System.out.println("|");
         }
+
+        // Виводимо тире --------- під ігровою сіткою
+        System.out.println("---------");
     }
 }
