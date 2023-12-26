@@ -1,21 +1,46 @@
 package CreditCalc;
 
+import java.util.Scanner;
 public class CreditCalc {
     public static void main(String[] args) {
 
-        // Виводимо початковий розмір кредиту
-        System.out.println("Loan principal: 1000");
+        // Запитуємо у користувача суму кредиту
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the loan principal:");
+        double principal = scanner.nextDouble();
 
-        // Виводимо суму погашення за перший місяць
-        System.out.println("Month 1: repaid 250");
+        // Запитуємо у користувача, що потрібно розрахувати
+        System.out.println("What do you want to calculate?");
+        System.out.println("type 'm' – for number of monthly payments,");
+        System.out.println("type 'p' – for the monthly payment:");
+        char choice = scanner.next().charAt(0);
 
-        // Виводимо суму погашення за другий місяць
-        System.out.println("Month 2: repaid 250");
+        // Обробляємо вибір користувача
+        switch (choice) {
+            case 'm': {
+                // Обчислюємо кількість місяців
+                System.out.println("Enter the monthly payment:");
+                double payment = scanner.nextDouble();
+                int months = (int) Math.ceil(principal / payment);
+                System.out.println("It will take " + months + " months to repay the loan");
+                break;
+            }
+            case 'p': {
+                // Обчислюємо суму щомісячного платежу
+                System.out.println("Enter the number of months:");
+                int months = scanner.nextInt();
+                double payment = principal / months;
+                System.out.println("Your monthly payment = " + payment);
 
-        // Виводимо суму погашення за третій місяць
-        System.out.println("Month 3: repaid 500");
-
-        // Виводимо повідомлення про те, що кредит погашений
-        System.out.println("The loan has been repaid!");
+                // Обчислюємо останній платіж
+                double lastPayment = principal - (months - 1) * payment;
+                System.out.println("and the last payment = " + lastPayment);
+                break;
+            }
+            default: {
+                System.out.println("Unknown choice");
+                break;
+            }
+        }
     }
 }
