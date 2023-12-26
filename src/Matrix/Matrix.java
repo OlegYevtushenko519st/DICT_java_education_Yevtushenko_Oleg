@@ -16,36 +16,23 @@ public class Matrix {
             }
         }
 
-        int[][] B = new int[n][m];
+        int c = scanner.nextInt();
+
+        int[][] C = multiplyMatrixByConstant(A, c);
+
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                B[i][j] = scanner.nextInt();
+                System.out.print(C[i][j] + " ");
             }
-        }
-
-        int[][] C = addMatrices(A, B);
-
-        if (C == null) {
-            System.out.println("ERROR");
-        } else {
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < m; j++) {
-                    System.out.print(C[i][j] + " ");
-                }
-                System.out.println();
-            }
+            System.out.println();
         }
     }
 
-    private static int[][] addMatrices(int[][] A, int[][] B) {
-        if (A.length != B.length || A[0].length != B[0].length) {
-            return null;
-        }
-
+    private static int[][] multiplyMatrixByConstant(int[][] A, int c) {
         int[][] C = new int[A.length][A[0].length];
         for (int i = 0; i < A.length; i++) {
             for (int j = 0; j < A[0].length; j++) {
-                C[i][j] = A[i][j] + B[i][j];
+                C[i][j] = c * A[i][j];
             }
         }
 
