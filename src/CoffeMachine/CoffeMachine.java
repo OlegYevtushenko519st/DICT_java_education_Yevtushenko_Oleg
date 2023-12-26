@@ -42,6 +42,61 @@ public class CoffeMachine {
                                 System.out.println("Sorry, not enough cups!");
                             }
                             break;
+
+                        case "2":
+                            if (water >= 350 && milk >= 75 && beans >= 20 && disposableCups >= 1) {
+                                System.out.println("I have enough resources, making you a coffee!");
+                                water -= 350;
+                                milk -= 75;
+                                beans -= 20;
+                                money += 7;
+                                disposableCups -= 1;
+
+
+                            } else if (water < 350) {
+                                System.out.println("Sorry, not enough water!");
+
+
+                            } else if (milk < 75) {
+                                System.out.println("Sorry, not enough milk!");
+
+
+                            } else if (beans < 20) {
+                                System.out.println("Sorry, not enough coffee beans!");
+
+
+                            } else {
+                                System.out.println("Sorry, not enough cups!");
+
+
+                            }
+                            break;
+                        case "3":
+
+                            if (water >= 200 && milk >= 100 && beans >= 12 && disposableCups >= 1) {
+                                System.out.println("I have enough resources, making you a coffee!");
+                                water = water - 200;
+                                milk = milk - 100;
+                                beans = beans - 12;
+                                money = money + 6;
+                                disposableCups = disposableCups - 1;
+
+                            } else if (water < 200) {
+                                System.out.println("Sorry, not enough water!");
+
+
+                            } else if (milk < 100) {
+                                System.out.println("Sorry, not enough milk!");
+
+                            } else if (beans < 20) {
+                                System.out.println("Sorry, not enough beans!");
+
+
+                            } else {
+                                System.out.println("Sorry, not enough cups!");
+
+                            }
+                            break;
                         case "back":
                             break;
                         default:
@@ -62,7 +117,7 @@ public class CoffeMachine {
                     break;
 
                 case "take":
-                    System.out.println("I gave you $" + money);
+                    System.out.println("I gave you UAH" + money);
                     money = 0;
 
                     break;
