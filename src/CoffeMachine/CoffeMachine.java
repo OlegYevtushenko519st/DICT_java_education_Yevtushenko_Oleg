@@ -13,6 +13,8 @@ public class CoffeMachine {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String action = " ";
+
+        while (!action.equals("exit")) {
             System.out.print("Write action (buy, fill, take, remaining, exit): ");
             action = scanner.next();
 
@@ -75,6 +77,8 @@ public class CoffeMachine {
 
             }
         }
+
+    }
     private static void printStatus() {
 
         System.out.println("The coffee machine has:");
