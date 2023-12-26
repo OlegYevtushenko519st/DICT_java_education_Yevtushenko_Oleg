@@ -1,46 +1,77 @@
 package CreditCalc;
 
 import java.util.Scanner;
+import static java.lang.Math.*;
+
 public class CreditCalc {
     public static void main(String[] args) {
-
-        // Запитуємо у користувача суму кредиту
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the loan principal:");
-        double principal = scanner.nextDouble();
+        Scanner scanner1 = new Scanner(System.in);
+        String enter;
+        double num,pay,mons,prosent;
 
-        // Запитуємо у користувача, що потрібно розрахувати
-        System.out.println("What do you want to calculate?");
-        System.out.println("type 'm' – for number of monthly payments,");
-        System.out.println("type 'p' – for the monthly payment:");
-        char choice = scanner.next().charAt(0);
+        System.out.println("Що ви хочете обчислити? \n" +
+                "введіть \"n\" для кількості щомісячних платежів,  \n" +
+                "введіть \"a\" для суми щомісячного ануїтетного платежу,  \n" +
+                "введіть \"p\" для основної позики: \n");
+        enter = scanner1.nextLine();
 
-        // Обробляємо вибір користувача
-        switch (choice) {
-            case 'm': {
-                // Обчислюємо кількість місяців
-                System.out.println("Enter the monthly payment:");
-                double payment = scanner.nextDouble();
-                int months = (int) Math.ceil(principal / payment);
-                System.out.println("It will take " + months + " months to repay the loan");
-                break;
-            }
-            case 'p': {
-                // Обчислюємо суму щомісячного платежу
-                System.out.println("Enter the number of months:");
-                int months = scanner.nextInt();
-                double payment = principal / months;
-                System.out.println("Your monthly payment = " + payment);
+        if (enter.equals("n")){
+            System.out.println("Введіть основну суму кредиту: ");
+            num = scanner.nextDouble();
+            System.out.println("Введіть що місячний платіж: ");
+            pay = scanner.nextDouble();
+            System.out.println("Введіть відсотки за кредит: ");
+            prosent =scanner.nextDouble();
+            double i;
+            i = (0.1)/(12*1);
 
-                // Обчислюємо останній платіж
-                double lastPayment = principal - (months - 1) * payment;
-                System.out.println("and the last payment = " + lastPayment);
-                break;
-            }
-            default: {
-                System.out.println("Unknown choice");
-                break;
-            }
+            double l = log(pay / (pay - (i * num)))/log(1+i);
+            round(l);
+            double months =l;
+            double years = l/12;
+            double remainingMonths = months % 12;
+            System.out.println("Рік: "+ round(years) + " місяць: "+ round(remainingMonths));
+
         }
+        if (enter.equals("a")){
+            System.out.println("Введіть основну суму кредиту: ");
+            num = scanner.nextDouble();
+            System.out.println("Введіть кількість періодів: ");
+            mons = scanner.nextDouble();
+            System.out.println("Введіть відсотки за кредит: ");
+            prosent =scanner.nextDouble();
+
+            double x =num*(0.01+(0.01/(pow(1+0.01,mons)-1)));
+
+            System.out.println("Ваш платіж за місяць: "+round(x));
+
+        }
+        if (enter.equals("p")){
+            System.out.println("Введіть ануїтет платіжу: ");
+            num = scanner.nextDouble();
+            System.out.println("Введіть кількість періодів: ");
+            mons = scanner.nextDouble();
+            System.out.println("Введіть відсотки за кредит: ");
+            prosent =scanner.nextDouble();
+
+            double d = num/((0.056*pow(1+0.056,mons))/pow(1+0.056,mons)-1);
+            System.out.println(d);
+        }
+        if(enter.equals("d")){
+            System.out.println("Annuity");
+            double period,sum,proz,res;
+            System.out.println("Dperiods: ");
+            period = scanner.nextDouble();
+            System.out.println("Dprincipal: ");
+            sum = scanner.nextDouble();
+            System.out.println("Dinterest: ");
+            proz = scanner.nextDouble();
+            res = sum*(0.1/(1+0.1)-period-1);
+            System.out.println(res);
+
+
+        }
+
     }
 }
